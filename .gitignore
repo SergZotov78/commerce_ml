@@ -17,7 +17,7 @@ config/database.yml
 .DS_Store
 
 #Ignore upload files
-/public/upload
+#/public/upload
 /public/uploads
 /public/spec
 /public/tmp
