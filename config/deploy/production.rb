@@ -27,7 +27,7 @@ server '62.109.1.60', user: 'deployer', roles: %w{web app db}, primary: true
 # Global options
 # --------------
 set :ssh_options, {
-   keys: %w(/Users/admin/.ssh/id_rsa),
+   keys: %w(/Users/sergey/.ssh/id_rsa),
    forward_agent: true,
    auth_methods: %w(publickey password),
    port: 4321
