@@ -1,5 +1,4 @@
 class ProductImporter
-  FILE_PRODUCT = "#{Rails.root}/public/upload/import.xml"
 
   def initialize file
     f = File.open(file)
