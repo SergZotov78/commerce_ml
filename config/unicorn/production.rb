@@ -5,6 +5,7 @@ pid               "#{app_path}/current/tmp/pids/unicorn.pid"
 
 # listen
 listen "/tmp/unicorn.commerce_ml.sock", backlog: 64
+timeout 600
 
 # logging
 stderr_path "log/unicorn.stderr.log"
