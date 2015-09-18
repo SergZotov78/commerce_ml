@@ -9,9 +9,9 @@ class ProductsController < ApplicationController
   end
 
   def index
-    @categories = Category.all
-    @products = Product.all
-    @costs = Cost.all
-    @pricetype = Pricetype.all
+    @categories = Category.count
+    @products = Product.count
+    @costs = Cost.count
+    @pricetype = Pricetype.count
   end
 end
