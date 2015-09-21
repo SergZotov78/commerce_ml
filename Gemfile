@@ -52,6 +52,9 @@ gem 'sidetiq'
 gem 'mysql2'
 gem 'thinking-sphinx'
 
+gem 'jquery-datatables-rails', '~> 3.3.0'
+
+
 group :test, :development do
   gem 'rspec-rails'
   gem 'factory_girl_rails'

@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
 
   def import
-    if params[:token] == '998899'
+    if params[:token] == '99889988'
       ProductImporter.new("#{Rails.root}/public/upload/import.xml").import
       CostImporter.new("#{Rails.root}/public/upload/offers.xml").import
       @count_category = Category.count
@@ -9,6 +9,6 @@ class ProductsController < ApplicationController
   end
 
   def index
-    @products = Product.all
+    @products = Product.all.limit(300)
   end
 end

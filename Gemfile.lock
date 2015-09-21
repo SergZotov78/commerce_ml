@@ -182,6 +182,11 @@ GEM
       multi_json (~> 1.2)
     joiner (0.3.4)
       activerecord (>= 4.1.0)
+    jquery-datatables-rails (3.3.0)
+      actionpack (>= 3.1)
+      jquery-rails
+      railties (>= 3.1)
+      sass-rails
     jquery-rails (4.0.5)
       rails-dom-testing (~> 1.0)
       railties (>= 4.2.0)
@@ -389,6 +394,7 @@ DEPENDENCIES
   dotenv-rails
   factory_girl_rails
   jbuilder (~> 2.0)
+  jquery-datatables-rails (~> 3.3.0)
   jquery-rails
   launchy
   less-rails

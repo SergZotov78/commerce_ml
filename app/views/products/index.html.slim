@@ -1,3 +1,20 @@
-h2 Загружено:
-ul
-  li Товаров #{@products}
+h2 Product
+h4 Info:
+span Кол-во продуктов: #{@products.size} обновленно: #{@products.last.updated_at.strftime("%B %e, %Y")}
+
+
+
+table id='datatables'
+  thead
+    tr
+      th Категория Наиенование
+      th Цена
+      th Количество
+  tbody
+    -@products.each do |product|
+      tr
+        td #{product.title}
+        -product.costs.each do |price|
+          - if price.pricetype_id == '943956be-6614-11e3-ac3c-84c9b27e5984'
+            td #{price.title}
+        td #{product.amount}
