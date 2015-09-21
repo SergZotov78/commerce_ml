@@ -7,8 +7,8 @@ class ProductImporter
   end
 
   def import
-    create_products
     create_categories
+    create_products
   end
 
   private
@@ -19,36 +19,43 @@ class ProductImporter
   end
 
   def create_product product
-    Product.create(
-               category_id: product.css("Группы/Ид").text,
-               title: product.css("Наименование").text,
-               part_number: product.css("Артикул").text,
-               full_text: product.css("ЗначенияРеквизитов/ЗначениеРеквизита")
-                              .select { |text| text.css("Наименование").text == "Полное наименование" }
+    category = Category.find_by(category_id: product.xpath("Группы/Ид").text)
+    if category.nil?
+      category = Category.find_by(category_id: '-')
+      category = Category.create(title: '-', category_id: '-') if category.nil?
+    end
+    category.products.create(
+               product_id: product.xpath("Ид").text,
+               title: product.xpath("Наименование").text,
+               part_number: product.xpath("Артикул").text,
+               full_text: product.xpath("ЗначенияРеквизитов/ЗначениеРеквизита")
+                              .select { |text| text.xpath("Наименование").text == "Полное наименование" }
                               .first
-                              .css("Значение").text
+                              .xpath("Значение").text
 
     )
   end
 
   def create_categories
     Category.delete_all
-    @doc.xpath("//Классификатор/Группы/Группа").each{ |category| find_category category }
+    @doc.xpath("//Классификатор/Группы").each{ |category| find_category category }
   end
 
-  def find_category( category, parent_id = 0)
-      create_category category, parent_id
-      category.each{ |cat| find_category(cat, category.xpath("Ид").text) }
-      find_category category.xpath("Группы/Группа") unless category.xpath("Группы/Группа").empty?
+  def find_category category
+      if category.xpath("Группа").present?
+        category.xpath("Группа").each do |cat|
+          Category.create(
+              category_id: cat.xpath("Ид").text,
+              parent_id: find_parent_cat(cat),
+              title: cat.xpath("Наименование").text
+          )
+        end
+        find_category category.xpath("Группа/Группы")
+      end
   end
 
-  def create_category category, parent_id
-    if category.xpath("Ид").count == 1
-      Category.create(
-          category_id: category.xpath("Ид").text,
-          parent_id: parent_id,
-          title: category.xpath("Наименование").text
-      )
-    end
+  def find_parent_cat(cat)
+    (cat.parent.parent.xpath("Наименование").text == 'Классификатор (Основной каталог товаров)') ? "0" : cat.parent.parent.xpath("Наименование").text
   end
+
 end
