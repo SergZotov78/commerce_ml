@@ -16,6 +16,11 @@
 # every 4.days do
 #   runner "AnotherModel.prune_old_records"
 # end
+every 1.hours do
+  runner 'ProductImporter.new("#{Rails.root}/public/upload/import.xml").import'
+  runner 'CostImporter.new("#{Rails.root}/public/upload/offers.xml").import'
+end
+
 
 every 60.minutes do
   rake "ts:index"
