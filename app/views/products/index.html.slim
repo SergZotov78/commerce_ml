@@ -8,13 +8,13 @@ table id='datatables'
   thead
     tr
       th Категория Наиенование
-      th Цена
       th Количество
+      th Стоимость за ед.
   tbody
     -@products.each do |product|
       tr
         td #{product.title}
+        td #{product.amount}
         -product.costs.each do |price|
           - if price.pricetype_id == '943956be-6614-11e3-ac3c-84c9b27e5984'
             td #{price.title}
-        td #{product.amount}

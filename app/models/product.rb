@@ -5,4 +5,6 @@ class Product < ActiveRecord::Base
 
   validates :title, presence: true
 
+  scope :willamount, ->{ where "amount > 0"}
+
 end

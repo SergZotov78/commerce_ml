@@ -9,6 +9,6 @@ class ProductsController < ApplicationController
   end
 
   def index
-    @products = Product.all.limit(300)
+    @products = Product.willamount
   end
 end
