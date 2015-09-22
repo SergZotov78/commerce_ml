@@ -17,8 +17,8 @@
 #   runner "AnotherModel.prune_old_records"
 # end
 every 1.hours do
-  runner "ProductImporter.new('/home/deployer/commerce_ml/shared/public/uploads/import.xml').import"
-  runner "CostImporter.new(/home/deployer/commerce_ml/shared/public/uploads/offers.xml).import"
+  runner "ProductImporter.import"
+  runner "CostImporter.import"
 end
 
 

@@ -1,6 +1,7 @@
 class CostImporter
+  FILE_SOURCE = "#{Rails.root}/public/upload/offers.xml"
 
-  def initialize file
+  def initialize file = FILE_SOURCE
     f = File.open(file)
     @doc = Nokogiri::XML(f)
     f.close

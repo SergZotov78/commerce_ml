@@ -1,6 +1,7 @@
 class ProductImporter
+  FILE_SOURCE = "#{Rails.root}/public/upload/import.xml"
 
-  def initialize file
+  def initialize file = FILE_SOURCE
     f = File.open(file)
     @doc = Nokogiri::XML(f)
     f.close
