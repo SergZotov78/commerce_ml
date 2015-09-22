@@ -16,9 +16,9 @@
 # every 4.days do
 #   runner "AnotherModel.prune_old_records"
 # end
-every 1.hours do
-  runner "ProductImporter.import"
-  runner "CostImporter.import"
+every 20.minutes do
+  runner "ProductImporter.new.import"
+  runner "CostImporter.new.import"
 end
 
 
