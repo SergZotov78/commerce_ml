@@ -53,6 +53,7 @@ gem 'mysql2'
 gem 'thinking-sphinx'
 
 gem 'jquery-datatables-rails', '~> 3.3.0'
+gem 'jquery-ui-rails', '~> 4.2.1'
 gem 'will_paginate'
 
 

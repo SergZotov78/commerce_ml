@@ -2,6 +2,11 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-$ ->
-	$('#datatables').dataTable()
-		sPaginationType: "full_numbers"
+jQuery ->
+  $('#datatables').dataTable
+    sPaginationType: "full_numbers"
+    bJQueryUI: true
+    bProcessing: true
+    bServerSide: true
+    responsive: true
+    sAjaxSource: $('#datatables').data('source')
