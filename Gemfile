@@ -46,7 +46,7 @@ gem 'dotenv'
 gem 'dotenv-rails', require: 'dotenv/rails'
 gem 'redis-throttle', git: 'git@github.com:andreareginato/redis-throttle.git'
 gem 'whenever'
-gem 'sidekiq'
+gem 'sidekiq', '3.4.2'
 gem 'sinatra', '>= 1.3.0', require: nil
 gem 'sidetiq'
 gem 'mysql2'
