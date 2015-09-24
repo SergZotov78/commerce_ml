@@ -22,3 +22,5 @@ config/database.yml
 /public/spec
 /public/tmp
 dump.rdb
+config/*.sphinx.conf
+db/sphinx

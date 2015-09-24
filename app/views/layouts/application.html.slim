@@ -25,21 +25,21 @@ html lang="en"
           a.navbar-brand href="/"Commerce_DB
           .navbar-collapse.collapse.navbar-responsive-collapse
             ul.nav.navbar-nav
-              li= link_to "Log_in(unactive)", "#"
+              li= link_to "Log_in(inactive)", "#"
 
     .container
       .row
-        .col-lg-9
-          = bootstrap_flash
-          = yield
-        .col-lg-3
+        .col-lg-2
           .well.sidebar-nav
             h3 Menu
             ul.nav.nav-list
               li.nav-header Catalog
-              li= link_to "Project(unactive)", "#"
+              li= link_to "Project(inactive)", "#"
+        .col-lg-10
+          = bootstrap_flash
+          = yield
 
-    
+
 
     = javascript_include_tag "application"
       /! Le HTML5 shim, for IE6-8 support of HTML elements

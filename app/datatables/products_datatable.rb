@@ -20,8 +20,8 @@ class ProductsDatatable
     products.map do |product|
       [
           raw(product.title),
-          raw(product.amount),
-          raw(product.costs.select{ |c| c.pricetype_id == '943956be-6614-11e3-ac3c-84c9b27e5984'}.first.title)
+          raw(float_to_int product.amount),
+          raw(product.costs.select{ |c| c.pricetype_id == '943956be-6614-11e3-ac3c-84c9b27e5984'}.first.price)
       ]
     end
   end
@@ -54,5 +54,10 @@ class ProductsDatatable
 
   def sort_direction
     params[:sSortDir_0] == "desc" ? "desc" : "asc"
+  end
+
+
+  def float_to_int data
+    ( data == data.to_i ) ? data.to_i : data
   end
 end
