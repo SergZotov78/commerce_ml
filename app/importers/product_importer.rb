@@ -23,7 +23,7 @@ class ProductImporter
     category = Category.find_by(category_id: product.xpath("Группы/Ид").text)
     if category.nil?
       category = Category.find_by(category_id: '-')
-      category = Category.create(title: '-', category_id: '-') if category.nil?
+      category = Category.create(title: 'Other', category_id: '-') if category.nil?
     end
     category.products.create(
                product_id: product.xpath("Ид").text,
@@ -56,7 +56,7 @@ class ProductImporter
   end
 
   def find_parent_cat(cat)
-    (cat.parent.parent.xpath("Наименование").text == 'Классификатор (Основной каталог товаров)') ? "0" : cat.parent.parent.xpath("Наименование").text
+    (cat.parent.parent.xpath("Ид").text == 'c7f284d8-9770-4e6a-971e-18c65e4df308') ? "0" : cat.parent.parent.xpath("Ид").text
   end
 
 end
