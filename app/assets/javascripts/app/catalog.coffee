@@ -39,7 +39,4 @@ class Catalog
           $('.catalog__left').html(btns)
           if catalog.parent?
             $('.catalog__left button:first').before("<button class=\'btn btn-default btn-block get_parent' type='button' data-parent_id=\"#{catalog.parent.parent_id}\" data-id=\"#{catalog.parent.category_id}\">#{catalog.parent.title}</button>")
-
-
-
 window.Catalog = Catalog
