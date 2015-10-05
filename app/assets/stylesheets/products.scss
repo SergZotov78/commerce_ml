@@ -1,34 +1,4 @@
-// Place all the styles related to the Products controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+//= require_self
 
-tbody{
-  td{
-    text-align: right;
-  }
-  td:first-child{
-    text-align: left;
-  }
-}
-body .catalog__box {
-  position: fixed;
-  z-index: 1001;
-  height: 100%;
-  width: 100%;
-  left: 0;
-  bottom: 0;
-  .catalog__left {
-    background: #1d1d1d none repeat scroll 0 0;
-    float: left;
-    height: 100%;
-    width: 22%;
-    padding: 15px;
-  }
-  .catalog__opacity {
-    background: black none repeat scroll 0 0;
-    float: left;
-    height: 100%;
-    opacity: 0.65;
-    width: 78%;
-  }
-}
+@import "base/table";
+@import "base/left_menu";
