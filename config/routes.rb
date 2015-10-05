@@ -13,6 +13,10 @@ Rails.application.routes.draw do
     collection do
       get 'import'
     end
+    member do
+      post :child_catalog
+      post :get_parent_catalog
+    end
   end
 
   # Example of regular route:

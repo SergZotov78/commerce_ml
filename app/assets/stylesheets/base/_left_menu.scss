@@ -11,6 +11,23 @@ body .catalog__box {
     height: 100%;
     width: 22%;
     padding: 15px;
+    overflow: auto;
+    button{
+      position: relative;
+      padding: 6px 23px;
+      white-space: normal;
+      font-size: 12px;
+    }
+    .get_parent:before{
+      content: "<";
+      left: 5px;
+      position: absolute;
+    }
+    .get_child:after{
+      content: ">";
+      left: 247px;
+      position: absolute;
+    }
   }
   .catalog__opacity {
     background: black none repeat scroll 0 0;

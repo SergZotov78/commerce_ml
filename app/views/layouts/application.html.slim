@@ -41,7 +41,7 @@ html lang="en"
   .catalog__box.invisible
     .catalog__left
       -@categories_main.each do |cat|
-        button.btn.btn-default.btn-block type="button" =cat.title
+        button.btn.btn-default.btn-block.get_child type="button" data-id=cat.category_id data-parent_id=cat.parent_id =cat.title
     .catalog__opacity
 
   = javascript_include_tag "application"
