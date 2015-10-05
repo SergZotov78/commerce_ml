@@ -9,4 +9,9 @@ jQuery ->
     bProcessing: true
     bServerSide: true
     responsive: true
+    fnServerParams: (aoData) ->
+      aoData.push
+        'name': 'more_data'
+        'value': 'my_value'
+      return
     sAjaxSource: $('#datatables').data('source')
