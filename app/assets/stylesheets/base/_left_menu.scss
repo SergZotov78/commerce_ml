@@ -13,10 +13,12 @@ body .catalog__box {
     padding: 15px;
     overflow: auto;
     button{
-      position: relative;
-      padding: 6px 23px;
-      white-space: normal;
       font-size: 12px;
+      margin: 2px 0;
+      padding: 6px 34px 6px 5px;
+      position: relative;
+      white-space: normal;
+      width: 286px;
     }
     .get_parent:before{
       content: "<";
@@ -27,6 +29,12 @@ body .catalog__box {
       content: ">";
       right: 5px;
       position: absolute;
+    }
+    .check__category{
+      position: absolute;
+      right: 18px;
+      top: 8px;
+      z-index: 1002;
     }
   }
   .catalog__opacity {

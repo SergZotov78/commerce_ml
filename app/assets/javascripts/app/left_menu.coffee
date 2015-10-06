@@ -24,7 +24,7 @@ class Catalog
           $(this).removeClass('get_child').addClass('get_parent')
           $('.catalog__left').html($(this))
           btns = for button in catalog.content
-            "<button class='btn btn-default btn-block get_child' type='button' data-parent_id=\"#{button.parent_id}\" data-id=\"#{button.category_id}\">#{button.title}</button>"
+            "<div class=\"btn-group\"><button class='btn btn-default btn-block get_child' type='button' data-parent_id=\"#{button.parent_id}\" data-id=\"#{button.category_id}\">#{button.title}</button><input class=\"check__category\" type=\"checkbox\" aria-label=\"\"></div>"
           $('.catalog__left button:last').after(btns)
         else
           $(this).addClass('btn-danger')
@@ -35,9 +35,9 @@ class Catalog
       $.post '/products/' + parent_id + '/child_catalog', {}, (catalog) =>
         if catalog.success > 0
           btns = for button in catalog.content
-            "<button class=\'btn btn-default btn-block get_child' type='button' data-parent_id=\"#{button.parent_id}\" data-id=\"#{button.category_id}\">#{button.title}</button>"
+            "<div class=\"btn-group\"><button class=\'btn btn-default btn-block get_child' type='button' data-parent_id=\"#{button.parent_id}\" data-id=\"#{button.category_id}\">#{button.title}</button><input class=\"check__category\" type=\"checkbox\" aria-label=\"\"></div>"
           $('.catalog__left').html(btns)
           if catalog.parent?
-            $('.catalog__left button:first').before("<button class=\'btn btn-default btn-block get_parent' type='button' data-parent_id=\"#{catalog.parent.parent_id}\" data-id=\"#{catalog.parent.category_id}\">#{catalog.parent.title}</button>")
+            $('.catalog__left button:first').before("<div class=\"btn-group\"><button class=\'btn btn-default btn-block get_parent' type='button' data-parent_id=\"#{catalog.parent.parent_id}\" data-id=\"#{catalog.parent.category_id}\">#{catalog.parent.title}</button><input class=\"check__category\" type=\"checkbox\" aria-label=\"\"></div>")
 
 window.Catalog = Catalog
