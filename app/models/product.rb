@@ -7,4 +7,6 @@ class Product < ActiveRecord::Base
 
   scope :willamount, ->{ where "amount > 0"}
 
+  scope :by_categories_id, ->(cat_ids){ where({category_id: cat_ids}) }
+
 end

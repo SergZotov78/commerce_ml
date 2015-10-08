@@ -3,7 +3,7 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 jQuery ->
-  $('#datatables').dataTable
+  mainTables = $('#datatables').dataTable
     sPaginationType: "full_numbers"
     bJQueryUI: true
     bProcessing: true
@@ -11,7 +11,7 @@ jQuery ->
     responsive: true
     fnServerParams: (aoData) ->
       aoData.push
-        'name': 'more_data'
-        'value': 'my_value'
+        'name': 'checkCatalog'
+        'value': $('.catalog__left [type="checkbox"]:checked').parents('.btn-group').find('button').attr('data-id')
       return
     sAjaxSource: $('#datatables').data('source')

@@ -7,6 +7,7 @@ class Catalog
     do @handleHideCatalogMenu
     do @handleGetChildCatalogItems
     do @handleGetParentCatalogItems
+    do @handleChangeMenuChecked
 
   handleShowCatalogMenu: ->
     $(document).on 'click', '.btn__catalog_menu', ->
@@ -39,5 +40,13 @@ class Catalog
           $('.catalog__left').html(btns)
           if catalog.parent?
             $('.catalog__left button:first').before("<div class=\"btn-group\"><button class=\'btn btn-default btn-block get_parent' type='button' data-parent_id=\"#{catalog.parent.parent_id}\" data-id=\"#{catalog.parent.category_id}\">#{catalog.parent.title}</button><input class=\"check__category\" type=\"checkbox\" aria-label=\"\"></div>")
+
+  handleChangeMenuChecked: ->
+    $(document).on 'change', '.catalog__left [type="checkbox"]', ->
+      $('.catalog__left [type="checkbox"]:checked').each ->
+        $(this).prop('checked', false)
+      $(this).prop('checked', true)
+      $('#datatables').dataTable()._fnAjaxUpdate();
+      $('.catalog__box').addClass('invisible')
 
 window.Catalog = Catalog

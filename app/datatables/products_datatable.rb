@@ -32,6 +32,14 @@ class ProductsDatatable
 
   def fetch_products
     products = Product.willamount.order("#{sort_column} #{sort_direction}")
+    if params[:checkCatalog]
+      categories_id = Category.get_children_all(params[:checkCatalog])
+      categories_id = (categories_id.instance_of? Array) ? categories_id.flatten.uniq : categories_id
+      #TODO переделать импорт файлов для того чтобы сразу летели ид родительских категорий, или как по другому
+      categories = categories_id.map{|cat_id| Category.find_by(category_id: cat_id)[:id] }
+      products = products.by_categories_id(categories)
+      # products = categories.inject{|_, cat| cat.products}.select{ |product| product.amount.present? }
+    end
     products = products.page(page).per_page(per_page)
     if params[:sSearch].present?
       products = products.where("title like :search", search: "%#{params[:sSearch]}%")
