@@ -25,7 +25,11 @@ html lang="en"
         a.navbar-brand href="/"Commerce_DB
         .navbar-collapse.collapse.navbar-responsive-collapse
           ul.nav.navbar-nav
-            li= link_to "Log_in(inactive)", "#"
+            - if user_signed_in?
+              li= link_to "Log out", destroy_user_session_path, method: :delete
+            - else
+              li= link_to "Log in", new_user_session_path
+
 
     .container
       .row
@@ -40,10 +44,7 @@ html lang="en"
 
   .catalog__box.invisible
     .catalog__left
-      -@categories_main.each do |cat|
-        .btn-group
-          button.btn.btn-default.btn-block.get_child type="button" data-id=cat.category_id data-parent_id=cat.parent_id =cat.title
-          input.check__category type='checkbox' aria-label=''
+      = render 'categories/menu' if @categories_main.present?
     .catalog__opacity
 
   = javascript_include_tag "application"

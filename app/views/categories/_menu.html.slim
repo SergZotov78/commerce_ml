@@ -1,0 +1,4 @@
+-@categories_main.each do |cat|
+  .btn-group
+    button.btn.btn-default.btn-block.get_child type="button" data-id=cat.category_id data-parent_id=cat.parent_id =cat.title
+    input.check__category type='checkbox' aria-label=''

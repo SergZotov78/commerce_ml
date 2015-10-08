@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
 
+  before_action :authenticate_user!, only: [ :index, :import]
   before_action :main_categories, only: [:index, :import]
   before_action :find_id_catalog, only: :child_catalog
 

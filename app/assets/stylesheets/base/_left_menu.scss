@@ -7,11 +7,12 @@ body .catalog__box {
   bottom: 0;
   .catalog__left {
     background: #1d1d1d none repeat scroll 0 0;
-    float: left;
     height: 100%;
-    width: 22%;
-    padding: 15px;
     overflow: auto;
+    padding: 15px;
+    position: absolute;
+    width: 315px;
+    z-index: 1002;
     button{
       font-size: 12px;
       margin: 2px 0;
@@ -39,9 +40,9 @@ body .catalog__box {
   }
   .catalog__opacity {
     background: black none repeat scroll 0 0;
-    float: left;
     height: 100%;
     opacity: 0.65;
-    width: 78%;
+    position: absolute;
+    width: 100%;
   }
 }
