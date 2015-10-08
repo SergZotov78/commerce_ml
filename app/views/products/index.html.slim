@@ -1,14 +1,23 @@
-h2 Остатки и цены
-h4 Info:
-span Кол-во продуктов: #{@products.size} обновленно: #{@products.last.updated_at.strftime("%B %e, %Y")}
-br
+.container
+  .row
+    .col-md-2
+      .well.sidebar-nav
+        h3 Menu
+        ul.nav.nav-list
+          li.nav-header.btn.btn-default.btn__catalog_menu Catalog
+
+    .col-md-10
+      h2 Остатки и цены
+      h4 Info:
+      span Кол-во продуктов: #{@products.size} обновленно: #{@products.last.updated_at.strftime("%B %e, %Y")}
+      br
 
 
 
-table id='datatables' class="display responsive no-wrap" data-source=products_url(format: 'json')
-  thead
-    tr
-      th Наименование
-      th Количество
-      th Цена руб.
-  tbody
+      table id='datatables' class="display responsive no-wrap" data-source=products_url(format: 'json')
+        thead
+          tr
+            th Наименование
+            th Количество
+            th Цена руб.
+        tbody
