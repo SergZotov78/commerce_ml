@@ -1,5 +1,5 @@
 class ProductsDatatable
-  delegate :params, :raw, :link_to, :number_to_currency, to: :@view
+  delegate :params, :raw,:link_to, :number_to_currency, :current_user, to: :@view
 
   def initialize(view)
     @view = view
@@ -21,7 +21,7 @@ class ProductsDatatable
       [
           raw(product.title),
           raw(float_to_int product.amount),
-          raw(product.costs.select{ |c| c.pricetype_id == '943956be-6614-11e3-ac3c-84c9b27e5984'}.first.price)
+          raw(product.costs.select{ |c| c.pricetype_id == current_user.pricetype.pricetype_id }.first.title)
       ]
     end
   end

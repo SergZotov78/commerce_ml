@@ -4,6 +4,7 @@ class ProductsController < ApplicationController
   before_action :main_categories, only: [:index, :import]
   before_action :find_id_catalog, only: :child_catalog
   before_action :user_activated, only: :index
+  before_action :user_session, only: :index
 
   def import
     if params[:token] == '99889988'
@@ -42,6 +43,10 @@ class ProductsController < ApplicationController
       flash[:notice] = 'Вашу активность не подтвердил администратор'
       redirect_to edit_user_registration_path(current_user)
     end
+  end
+
+  def user_session
+    session[:current_user_id] = current_user.id
   end
 
 end
