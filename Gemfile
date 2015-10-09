@@ -56,6 +56,9 @@ gem 'jquery-datatables-rails', '~> 3.3.0'
 gem 'jquery-ui-rails', '~> 4.2.1'
 gem 'will_paginate'
 
+gem 'activeadmin', '~> 1.0.0.pre2'
+
+
 
 group :test, :development do
   gem 'rspec-rails'

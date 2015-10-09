@@ -3,6 +3,7 @@ class ProductsController < ApplicationController
   before_action :authenticate_user!, only: [ :index, :import]
   before_action :main_categories, only: [:index, :import]
   before_action :find_id_catalog, only: :child_catalog
+  before_action :user_activated, only: :index
 
   def import
     if params[:token] == '99889988'
@@ -34,6 +35,13 @@ class ProductsController < ApplicationController
 
   def main_categories
     @categories_main = Category.where(parent_id: 0)
+  end
+
+  def user_activated
+    unless current_user.activated
+      flash[:notice] = 'Вашу активность не подтвердил администратор'
+      redirect_to edit_user_registration_path(current_user)
+    end
   end
 
 end
