@@ -1,5 +1,5 @@
 class CostImporter
-  FILE_SOURCE = "#{Rails.root}/public/uploads/full/offers.xml"
+  FILE_SOURCE = "#{Rails.root}/public/upload/offers.xml"
 
   def initialize file = FILE_SOURCE
     f = File.open(file)

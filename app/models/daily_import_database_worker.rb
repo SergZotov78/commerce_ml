@@ -2,7 +2,7 @@ class DailyImportDatabaseWorker
   include Sidekiq::Worker
   include Sidetiq::Schedulable
 
-  recurrence { hourly(2) }
+  recurrence { daily(1) }
 
   def perform
     ProductImporter.new.import
