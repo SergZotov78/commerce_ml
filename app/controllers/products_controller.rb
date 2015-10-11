@@ -1,15 +1,25 @@
 class ProductsController < ApplicationController
 
-  before_action :authenticate_user!, only: [ :index, :import]
-  before_action :main_categories, only: [:index, :import]
+  skip_before_filter :verify_authenticity_token, only: :import
+
+  before_action :authenticate_user!, only: :index
+  before_action :main_categories, only: :index
   before_action :find_id_catalog, only: :child_catalog
   before_action :user_activated, only: :index
   before_action :user_session, only: :index
 
   def import
-    if params[:token] == '99889988'
-      ProductImporter.new.import
-      CostImporter.new.import
+    if params[:mode] == 'checkauth'
+      render plain: "success\nImport\n998877"
+    end
+    if params[:mode] == 'init'
+      render plain: "zip=no\nfile_limit=100000000"
+    end
+    if params[:type] == 'catalog' && params[:mode] == 'file'
+      render plain: CommercemlSave.save(request ,params[:filename])
+    end
+    if params[:type] == 'catalog' && params[:mode] == 'import'
+      render plain: CommercemlSave.check(params[:filename])
     end
   end
 
@@ -48,5 +58,4 @@ class ProductsController < ApplicationController
   def user_session
     session[:current_user_id] = current_user.id
   end
-
 end

@@ -1,5 +1,5 @@
 class ProductImporter
-  FILE_SOURCE = "#{Rails.root}/public/upload/import.xml"
+  FILE_SOURCE = "#{Rails.root}/public/uploads/full/import.xml"
 
   def initialize file = FILE_SOURCE
     f = File.open(file)

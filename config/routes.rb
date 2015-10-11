@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   resources :products, only: :index do
     collection do
       get 'import'
+      post 'import'
     end
     member do
       post :child_catalog
