@@ -9,6 +9,7 @@ require 'capistrano/rails'
 require 'capistrano/sidekiq'
 require 'whenever/capistrano'
 require 'capistrano3/unicorn'
+require 'capistrano/rails/console'
 
 # Includes tasks from other gems included in your Gemfile
 #
